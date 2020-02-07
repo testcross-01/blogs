@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <p>
+        <a href="{% url 'blog:index' %}">Learning Log</a>-
+        <a href="{% url 'blog:topics' %}">Topics</a>
+    </p>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>
