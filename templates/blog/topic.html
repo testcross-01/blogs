@@ -1,23 +1,33 @@
 {% extends 'blog/base.html' %}
 
-{% block content%}
-    <p>Topic:{{ topic }}</p>
+{% block header %}
+    <h2>Topic:{{ topic }}</h2>
+{% endblock header %}
 
-    <p>Entries:</p>
-    <a href="{% url 'blog:new_entry' topic.id %}">add new entry</a>
-    <ul>
+{% block content%}
+
+    <p>
+        <a href="{% url 'blog:new_entry' topic.id %}">add new entry</a>
+    </p>
+
+
     {% for entry in entries %}
-        <li>
-            <p>{{ entry.data_added|date:'M d,Y H:i' }}</p>
-            <p>{{ entry.text|linebreaks }}</p>
-            <p>
-                <a href="{% url 'blog:edit_entry' entry.id %}">edit entry</a>
-            </p>
-        </li>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    {{ entry.data_added|date:'M d,Y H:i' }}
+                    <small>
+                        <a href="{% url 'blog:edit_entry' entry.id %}">edit entry</a>
+                    </small>
+                </h3>
+            </div>
+        <div class="panel-body">
+            {{ entry.text|linebreaks }}
+        </div>
+        </div>
+
     {% empty %}
-        <li>
             此主题还没有词条
-        </li>
     {% endfor %}
-    </ul>
+
 {% endblock content%}

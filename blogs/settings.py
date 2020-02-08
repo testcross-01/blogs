@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
+    'bootstrap3'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +129,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+LOGIN_URL='/users/login'
+
+BOOTSTRAP3={
+    'include_jquery':True
+}

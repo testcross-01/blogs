@@ -1,5 +1,5 @@
 from django.db import models
-
+from  django.contrib.auth.models import User
 # Create your models here.
 
 #学习主题信息
@@ -7,6 +7,7 @@ class Topic(models.Model):
     ''''用户学习主题'''
     text=models.CharField(max_length=200)#主题
     date_added=models.DateTimeField(auto_now=True)#添加的时间
+    owner=models.ForeignKey(User)
 
     def __str__(self):
         '''返回模型的字符串表示(重写str方法）'''
